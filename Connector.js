@@ -25,8 +25,8 @@ class Connector {
             })
         this.ConnectorDoc.MethodsDoc = this.MethodsDoc
         }
-      this.BuildDoc()
-      console.log(this.ConnectorDoc)
+        this.BuildDoc()
+      
         //improve futuro, metodos de gerenciar todo os metodos desse conector
     }
 
@@ -39,9 +39,6 @@ static Request = {
    Get : ConnectorRequest.Get,
    Post : ConnectorRequest.Post
 }
-
-
-
 
 static Server = ConnectorsServer
 

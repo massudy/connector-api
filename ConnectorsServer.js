@@ -75,8 +75,6 @@ class ConnectorsServer {
             })
         })
 
-        console.log(this.ServerDoc)
-
         this.app.listen(this.Port,() => {
             console.log(`Server running with ${this.Connectors.length} connectors...`)
         })
