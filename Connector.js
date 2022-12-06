@@ -18,7 +18,6 @@ class Connector {
         this.MethodsDoc = [new DocMethod()]
         this.MethodsDoc.splice(0,1)
         this.ConnectorDoc = {ConnectorName : this.Name,MethodsDoc : this.MethodsDoc}
-        this.ConnectorDoc.splice(0,1)
         this.BuildDoc = () => {
             this.Methods.forEach(m => {
                 m.Run()
