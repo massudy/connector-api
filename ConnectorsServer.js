@@ -18,7 +18,7 @@ class ConnectorsServer {
         this.Connectors.forEach(connector => {
             connector.Methods.forEach(method => {
                 
-                method.Run()
+                //method.Run()
                 let path = ''
                 if(method.Name == ''){
                     path = `${connector.Name}`
