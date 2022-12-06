@@ -6,7 +6,11 @@ class ConnectorsServer {
 
         this.Connectors = connectors
         this.Port = port
-
+        this.ServerDoc = [this.Connectors[0].ConnectorDoc]
+        this.ServerDoc.splice(0,1)
+        this.Connectors.forEach(connector => {
+            this.ServerDoc.push(connector.ConnectorDoc)
+        })
         this.app = express()
         this.app.use(json())
         
@@ -71,6 +75,7 @@ class ConnectorsServer {
             })
         })
 
+        console.log(this.ServerDoc)
 
         this.app.listen(this.Port,() => {
             console.log(`Server running with ${this.Connectors.length} connectors...`)

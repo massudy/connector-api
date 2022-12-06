@@ -15,21 +15,19 @@ class Connector {
     constructor(name,methods = [new ConnectorMethod.Get(),new ConnectorMethod.Post()],config = {}){
         this.Name = name
         this.Methods = methods
-        this.ConnectorDoc = [new DocMethod()]
+        this.MethodsDoc = [new DocMethod()]
+        this.MethodsDoc.splice(0,1)
+        this.ConnectorDoc = {ConnectorName : this.Name,MethodsDoc : this.MethodsDoc}
         this.ConnectorDoc.splice(0,1)
         this.BuildDoc = () => {
             this.Methods.forEach(m => {
                 m.Run()
-                this.ConnectorDoc.push(new DocMethod(m.Name,m.Method,m.MethodDoc))
+                this.MethodsDoc.push(new DocMethod(m.Name,m.Method,m.MethodDoc))
             })
+        this.ConnectorDoc.MethodsDoc = this.MethodsDoc
         }
       this.BuildDoc()
-      this.ConnectorDoc.forEach(dm => {
-        console.log(dm.Name)
-        console.log(dm.Type)
-        console.log(dm.Fields)
-        console.log('')
-      })
+      console.log(this.ConnectorDoc)
         //improve futuro, metodos de gerenciar todo os metodos desse conector
     }
 
