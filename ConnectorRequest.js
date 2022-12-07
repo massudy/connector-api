@@ -1,13 +1,11 @@
 import axios from 'axios'
+import ResponseModel from './ResponseModel.js'
 
 const ConnectorRequest = {
     Get : async (url = '',config = {Body : {},SingleParameter : ''}) => {
 
-        let objreturn = {
-            status : 404,
-            data : {}
-        }
-
+        let objreturn = new ResponseModel()
+        
         let Full_URL = ''
         let SingleParameter = ''
         
@@ -23,9 +21,16 @@ const ConnectorRequest = {
        
         const response = await axios.get(Full_URL,config.Body).catch(e => {})
         if(response){
-            objreturn.status = response.status
+            objreturn.Status = response.status
             if(response.data){
-                objreturn.data = response.data
+                if(response.data.Data){
+                    objreturn.Data = response.data.Data
+                } else {
+                    objreturn.Data = response.data
+                }
+                if(response.data.Errors){
+                    objreturn.Errors = [...response.data.Errors]
+                }
             }
         }
     
@@ -33,10 +38,7 @@ const ConnectorRequest = {
     },
     Post : async (url = '',config = {Body : {},SingleParameter : ''}) => {
 
-        let objreturn = {
-            status : 404,
-            data : {}
-        }
+        let objreturn = new ResponseModel()
 
         let Full_URL = ''
         let SingleParameter = ''
@@ -53,9 +55,16 @@ const ConnectorRequest = {
        
         const response = await axios.post(Full_URL,config.Body).catch(e => {})
         if(response){
-            objreturn.status = response.status
+            objreturn.Status = response.status
             if(response.data){
-                objreturn.data = response.data
+                if(response.data.Data){
+                    objreturn.Data = response.data.Data
+                } else {
+                    objreturn.Data = response.data
+                }
+                if(response.data.Errors){
+                    objreturn.Errors = [...response.data.Errors]
+                }
             }
         }
     
