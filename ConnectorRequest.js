@@ -19,6 +19,7 @@ const ConnectorRequest = {
         }
     
         if(config.SingleParameter != ''){
+            SingleParameter = config.SingleParameter
             Full_URL = `${Full_URL}${SingleParameter}`
         }
        
@@ -57,6 +58,7 @@ const ConnectorRequest = {
         }
     
         if(config.SingleParameter != ''){
+            SingleParameter = config.SingleParameter
             Full_URL = `${Full_URL}${SingleParameter}`
         }
        
