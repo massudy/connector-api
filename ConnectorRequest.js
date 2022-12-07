@@ -23,7 +23,7 @@ const ConnectorRequest = {
             Full_URL = `${Full_URL}${SingleParameter}`
         }
        
-        const response = await axios.get(Full_URL,{data : config.Body}).catch(e => {})
+        const response = await axios.get(Full_URL,config.Body).catch(e => {})
         if(response){
             objreturn.Status = response.status
             if(response.data){
@@ -62,7 +62,7 @@ const ConnectorRequest = {
             Full_URL = `${Full_URL}${SingleParameter}`
         }
        
-        const response = await axios.post(Full_URL,{data : config.Body}).catch(e => {})
+        const response = await axios.post(Full_URL,config.Body).catch(e => {})
         if(response){
             objreturn.Status = response.status
             if(response.data){
