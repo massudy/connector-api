@@ -1,14 +1,28 @@
 {
   "name": "connector-api",
   "version": "1.0.13",
-  "description": "",
+  "description": "Easy API creator",
   "main": "Connector.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/massudy/connector-api"
+  },
+  "homepage": "https://connector-api.notion.site/Guia-e294740e67ee485a88df62bc04c71464",
+  "keywords": [
+    "api creator",
+    "api",
+    "connector",
+    "express",
+    "axios",
+    "http",
+    "https",
+    "request"
+  ],
+  "author": "Daniel Massud",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.2.1",
