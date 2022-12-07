@@ -1,10 +1,13 @@
 import axios from 'axios'
-import ResponseModel from './ResponseModel.js'
 
 const ConnectorRequest = {
     Get : async (url = '',config = {Body : {},SingleParameter : ''}) => {
 
-        let objreturn = new ResponseModel()
+        let objreturn = {
+            Status : 404,
+            Data : {},
+            Errors : []
+        }
         
         let Full_URL = ''
         let SingleParameter = ''
@@ -38,7 +41,11 @@ const ConnectorRequest = {
     },
     Post : async (url = '',config = {Body : {},SingleParameter : ''}) => {
 
-        let objreturn = new ResponseModel()
+        let objreturn = {
+            Status : 404,
+            Data : {},
+            Errors : []
+        }
 
         let Full_URL = ''
         let SingleParameter = ''
