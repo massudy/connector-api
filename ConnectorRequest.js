@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const ConnectorRequest = {
-    Get : async (url = '',config = {Body : {},SingleParameter : ''}) => {
+    Get : async (url = '',config = {Body : {},Params : {},SingleParameter : ''}) => {
 
         let objreturn = {
             Status : 404,
@@ -10,20 +10,55 @@ const ConnectorRequest = {
         }
         
         let Full_URL = ''
+        let Parameter = ''
         let SingleParameter = ''
         
-        if(url.slice(-1) == '/'){
-            Full_URL = `${url}`
+        Full_URL = url
+       
+        
+        if(config.Params){
+            if(Object.keys(config.Params).length < 1){
+                
+                if(url.slice(-1) == '/'){
+                    Full_URL = `${url}`
+                } else {
+                    Full_URL = `${url}/`
+                }
+                
+                if(config.SingleParameter){
+                    if(config.SingleParameter != ''){
+                        SingleParameter = config.SingleParameter
+                        Full_URL = `${Full_URL}${SingleParameter}`
+                    }
+                }
+            } else {
+                Object.keys(config.Params).forEach((parameter_key,i) => {
+                    if(i == 0){
+                        Full_URL = `${Full_URL}?${parameter_key}=${config.Params[parameter_key]}`
+                    } else {
+                        Full_URL = `${Full_URL}&${parameter_key}=${config.Params[parameter_key]}`
+                    }
+                })
+            }
         } else {
-            Full_URL = `${url}/`
+            
+            if(url.slice(-1) == '/'){
+                Full_URL = `${url}`
+            } else {
+                Full_URL = `${url}/`
+            }
+
+            if(config.SingleParameter){
+                if(config.SingleParameter != ''){
+                    SingleParameter = config.SingleParameter
+                    Full_URL = `${Full_URL}${SingleParameter}`
+                }
+            }
         }
-    
-        if(config.SingleParameter != ''){
-            SingleParameter = config.SingleParameter
-            Full_URL = `${Full_URL}${SingleParameter}`
-        }
+        
        
         const response = await axios.get(Full_URL,{data : config.Body}).catch(e => {})
+        
         if(response){
             objreturn.Status = response.status
             if(response.data){
@@ -40,7 +75,7 @@ const ConnectorRequest = {
     
     return objreturn
     },
-    Post : async (url = '',config = {Body : {},SingleParameter : ''}) => {
+    Post : async (url = '',config = {Body : {},Params : {},SingleParameter : ''}) => {
 
         let objreturn = {
             Status : 404,
@@ -51,15 +86,46 @@ const ConnectorRequest = {
         let Full_URL = ''
         let SingleParameter = ''
         
-        if(url.slice(-1) == '/'){
-            Full_URL = `${url}`
-        } else {
-            Full_URL = `${url}/`
-        }
+        Full_URL = url
     
-        if(config.SingleParameter != ''){
-            SingleParameter = config.SingleParameter
-            Full_URL = `${Full_URL}${SingleParameter}`
+        if(config.Params){
+            if(Object.keys(config.Params).length < 1){
+                
+                if(url.slice(-1) == '/'){
+                    Full_URL = `${url}`
+                } else {
+                    Full_URL = `${url}/`
+                }
+                
+                if(config.SingleParameter){
+                    if(config.SingleParameter != ''){
+                        SingleParameter = config.SingleParameter
+                        Full_URL = `${Full_URL}${SingleParameter}`
+                    }
+                }
+            } else {
+                Object.keys(config.Params).forEach((parameter_key,i) => {
+                    if(i == 0){
+                        Full_URL = `${Full_URL}?${parameter_key}=${config.Params[parameter_key]}`
+                    } else {
+                        Full_URL = `${Full_URL}&${parameter_key}=${config.Params[parameter_key]}`
+                    }
+                })
+            }
+        } else {
+
+            if(url.slice(-1) == '/'){
+                Full_URL = `${url}`
+            } else {
+                Full_URL = `${url}/`
+            }
+
+            if(config.SingleParameter){
+                if(config.SingleParameter != ''){
+                    SingleParameter = config.SingleParameter
+                    Full_URL = `${Full_URL}${SingleParameter}`
+                }
+            }
         }
        
         const response = await axios.post(Full_URL,config.Body).catch(e => {})
