@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const ConnectorRequest = {
-    Get : async (url = '',config = {Body : {},Params : {},SingleParameter : ''}) => {
+    Get : async (url = '',config = {Body : {},Params : {},SingleParameter : '',Headers : {}}) => {
 
         let objreturn = {
             Status : 404,
@@ -57,7 +57,7 @@ const ConnectorRequest = {
         }
         
        
-        const response = await axios.get(Full_URL,{data : config.Body}).catch(e => {})
+        const response = await axios.get(Full_URL,{data : config.Body,headers : config.Headers}).catch(e => {})
         
         if(response){
             objreturn.Status = response.status
@@ -75,7 +75,7 @@ const ConnectorRequest = {
     
     return objreturn
     },
-    Post : async (url = '',config = {Body : {},Params : {},SingleParameter : ''}) => {
+    Post : async (url = '',config = {Body : {},Params : {},SingleParameter : '',Headers : {}}) => {
 
         let objreturn = {
             Status : 404,
@@ -128,7 +128,7 @@ const ConnectorRequest = {
             }
         }
        
-        const response = await axios.post(Full_URL,config.Body).catch(e => {})
+        const response = await axios.post(Full_URL,config.Body,{headers : config.Headers}).catch(e => {})
         if(response){
             objreturn.Status = response.status
             if(response.data){
