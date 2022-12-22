@@ -62,7 +62,18 @@ class BaseMethod {
             this.Build.Get(id).Response.Errors.push(error)
         }
 
-       
+            
+            this.Object = (config = {description : '',requeried : true,parameter : false}) => {
+                
+            let objreturn = {Name : '',Data : 'Body',Type : 'Object',Description : '',Requeried : true}
+            if(typeof config.requeried == Boolean){objreturn.Requeried = config.requeried}
+            objreturn.Description = config.description
+            if(config.parameter){objreturn.Data = 'Parameter'}
+            
+            if(objreturn.Description == '' || objreturn.Description == undefined){delete objreturn.Description}
+            return objreturn
+        }
+
             this.String = (config = {description : '',requeried : true,parameter : false}) => {
                 
                 let objreturn = {Name : '',Data : 'Body',Type : 'String',Description : '',Requeried : true}
