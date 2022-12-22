@@ -66,7 +66,7 @@ class BaseMethod {
             this.Object = (config = {description : '',requeried : true,parameter : false}) => {
                 
             let objreturn = {Name : '',Data : 'Body',Type : 'Object',Description : '',Requeried : true}
-            if(typeof config.requeried == Boolean){objreturn.Requeried = config.requeried}
+            if(typeof config.requeried == 'boolean'){objreturn.Requeried = config.requeried}
             objreturn.Description = config.description
             if(config.parameter){objreturn.Data = 'Parameter'}
             
@@ -77,7 +77,7 @@ class BaseMethod {
             this.String = (config = {description : '',requeried : true,parameter : false}) => {
                 
                 let objreturn = {Name : '',Data : 'Body',Type : 'String',Description : '',Requeried : true}
-                if(typeof config.requeried == Boolean){objreturn.Requeried = config.requeried}
+                if(typeof config.requeried == 'boolean'){objreturn.Requeried = config.requeried}
                 objreturn.Description = config.description
                 if(config.parameter){objreturn.Data = 'Parameter'}
                 
@@ -88,7 +88,7 @@ class BaseMethod {
             this.Number = (config = {description : '',requeried : true,parameter : false}) => {
                 
                 let objreturn = {Name : '',Data : 'Body',Type : 'Number',Description : '',Requeried : true}
-                if(typeof config.requeried == Boolean){objreturn.Requeried = config.requeried}
+                if(typeof config.requeried == 'boolean'){objreturn.Requeried = config.requeried}
                 objreturn.Description = config.description
                 if(config.parameter){objreturn.Data = 'Parameter'}
                 
