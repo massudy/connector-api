@@ -2,8 +2,15 @@ import express, { json } from 'express'
 import Connector from './Connector.js'
 
 class ConnectorsServer {
-    constructor(port,connectors = [new Connector]){
+    constructor(port,connectors = [new Connector],config = {
+        server_name : 'Untitled Server',
+        server_url : ''
+    }){
 
+        if(config.server_name == undefined){config.server_name = 'Untitled Server'}
+
+        this.Name = config.server_name
+        this.Url = config.server_url
         this.Connectors = connectors
         this.Port = port
         this.ServerDoc = [this.Connectors[0].ConnectorDoc]
