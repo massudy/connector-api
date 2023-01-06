@@ -1,6 +1,6 @@
 {
   "name": "connector-api",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "Easy API creator",
   "main": "Connector.js",
   "type": "module",
