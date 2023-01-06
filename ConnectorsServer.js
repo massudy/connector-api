@@ -4,11 +4,12 @@ import Connector from './Connector.js'
 class ConnectorsServer {
     constructor(port,connectors = [new Connector],config = {
         server_name : 'Untitled Server',
-        server_url : ''
+        server_url : '',
+        newdoc_url : ''
     }){
 
         if(config.server_name == undefined){config.server_name = 'Untitled Server'}
-
+        
         this.Name = config.server_name
         this.Url = config.server_url
         this.Connectors = connectors
@@ -81,6 +82,8 @@ class ConnectorsServer {
                 }
             })
         })
+
+        if(config.newdoc_url != undefined && config.newdoc_url != ''){Connector.Request.Post(config.newdoc_url,{Body : {ServerName : this.Name,ServerDoc : this.ServerDoc,ServerUrl : this.Url}})}
 
         this.app.listen(this.Port,() => {
             console.log(`Server running with ${this.Connectors.length} connectors...`)
