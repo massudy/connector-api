@@ -63,6 +63,18 @@ class BaseMethod {
         }
 
             
+
+        this.Array = (config = {description : '',requeried : true,parameter : false}) => {
+                
+            let objreturn = {Name : '',Data : 'Body',Type : 'Array',Description : '',Requeried : true}
+            if(typeof config.requeried == 'boolean'){objreturn.Requeried = config.requeried}
+            objreturn.Description = config.description
+            if(config.parameter){objreturn.Data = 'Parameter'}
+            
+            if(objreturn.Description == '' || objreturn.Description == undefined){delete objreturn.Description}
+            return objreturn
+        }
+
             this.Object = (config = {description : '',requeried : true,parameter : false}) => {
                 
             let objreturn = {Name : '',Data : 'Body',Type : 'Object',Description : '',Requeried : true}
